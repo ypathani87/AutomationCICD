@@ -24,3 +24,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean verify -Dtestng.dtd.http=true
+      
+    - name: Deploy report page to github page
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./target/cucumber-report-html/cucumber-html-reports
